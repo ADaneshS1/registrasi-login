@@ -8,9 +8,13 @@ async function api(req,res) {
 
         const {id} = req.query
 
-        const {row} = await sql`DELETE FROM userslocal WHERE id = ${id}`
+        if(!id) {
+            return res.status(405).json({message:"Id kosong"}) 
+        }
 
-        return res.status(200).json({message:"Succes",data:row})
+        const {rows} = await sql`DELETE FROM userslocal WHERE id = ${id}`
+
+        return res.status(200).json({message:"Succes",data:rows})
         
     } catch (error) {
         console.log("ADA ERROR ", error)
