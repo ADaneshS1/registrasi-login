@@ -7,8 +7,8 @@ async function execute() {
     const createTable = await sql`CREATE TABLE IF NOT EXISTS userslocal (
         id SERIAL PRIMARY KEY,
         nama VARCHAR(30) NOT NULL,
-        password VARCHAR(60) NOT NULl,
         username VARCHAR(15) NOT NULl UNIQUE,
+        password VARCHAR(60) NOT NULl,
         role INT,
         status INT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
